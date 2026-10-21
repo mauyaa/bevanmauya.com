@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Sagini app icon">
+  <defs>
+    <linearGradient id="saginiGradient" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#24103B" />
+      <stop offset="55%" stop-color="#5D2EAE" />
+      <stop offset="100%" stop-color="#7F4BE0" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="120" fill="url(#saginiGradient)" />
+  <text x="50%" y="56%" text-anchor="middle" font-size="220" font-family="Poppins, Arial, sans-serif" fill="#FFFFFF" font-weight="600">S</text>
+</svg>

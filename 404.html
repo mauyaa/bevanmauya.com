@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Not found — Bevan Mauya</title>
+<meta name="robots" content="noindex">
+<script>
+  /* Old deep links like /kodara or /projects land on the matching page in the new site */
+  (function(){
+    var slug=location.pathname.replace(/^\/+|\.html$|\/+$/g,'').toLowerCase();
+    var known={kodara:1,liminal:1,magnitai:1,zeni:1,zerogate:1,anighost:1};
+    location.replace('/'+(known[slug]?'#/work/'+slug:slug==='projects'?'#/work':slug==='contact'?'#/contact':''));
+  })();
+</script>
+</head>
+<body></body>
+</html>
