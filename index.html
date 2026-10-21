@@ -1,11 +1,13 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Bevan Mauya</title>
 <meta name="description" content="Bevan Mauya — founder and product engineer in Nairobi. I design and build software people rely on.">
-<meta name="theme-color" content="#F3F2EF">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F3F2EF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E0E0D" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://bevanmauya.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bevan Mauya">
@@ -28,7 +30,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 @font-face{font-family:'Permanent Marker';font-style:normal;font-weight:400;font-display:swap;src:url(assets/fonts/permanent-marker.woff2) format('woff2')}
-/* Bevan Mauya — four pages, one island. Light by default; the sun/moon switches. */
+/* Bevan Mauya — four pages, one island. Light or dark follows the device. */
 :root{
   --sans:'Instrument Sans',Inter,system-ui,-apple-system,sans-serif;
   --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -36,8 +38,8 @@
   --spring:cubic-bezier(.34,1.56,.64,1);
   --r:16px;
 }
-:root,[data-theme="light"]{--bg:#F3F2EF;--card:#FBFBF9;--raise:#EFEEEA;--ink:#151515;--ink-2:#5E5D59;--ink-3:#6A6964;--line:#E3E2DE;--ph:#E9E8E4;--accent:#D2381F;--shadow:0 1px 2px rgba(21,21,21,.04),0 8px 24px rgba(21,21,21,.04)}
-[data-theme="dark"]{--bg:#0E0E0D;--card:#151514;--raise:#1C1C1B;--ink:#EDEBE6;--ink-2:#B9B7B1;--ink-3:#97958F;--line:#2A2A28;--ph:#1A1A19;--accent:#F2C230;--shadow:none}
+:root{--bg:#F3F2EF;--card:#FBFBF9;--raise:#EFEEEA;--ink:#151515;--ink-2:#5E5D59;--ink-3:#6A6964;--line:#E3E2DE;--ph:#E9E8E4;--accent:#D2381F;--shadow:0 1px 2px rgba(21,21,21,.04),0 8px 24px rgba(21,21,21,.04)}
+@media (prefers-color-scheme:dark){:root{--bg:#0E0E0D;--card:#151514;--raise:#1C1C1B;--ink:#EDEBE6;--ink-2:#B9B7B1;--ink-3:#97958F;--line:#2A2A28;--ph:#1A1A19;--accent:#F2C230;--shadow:none}}
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--ink-2);font:400 14px/1.65 var(--sans);-webkit-font-smoothing:antialiased;transition:background-color .5s,color .5s}
 a{color:inherit;text-decoration:none}
@@ -171,8 +173,8 @@ a.pc:hover .top .icon{transform:rotate(-6deg)}
 .piece .lab{display:flex;justify-content:space-between;gap:8px;margin-top:8px;font-size:12px;color:var(--ink)}
 .piece .lab>span:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .piece .lab .mono{font-size:10px}
-:root,[data-theme="light"]{--wallc:#EAE8E3}
-[data-theme="dark"]{--wallc:#171716}
+:root{--wallc:#EAE8E3}
+@media (prefers-color-scheme:dark){:root{--wallc:#171716}}
 .lb{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:28px 20px 100px;background:var(--wallc);opacity:0;visibility:hidden;transition:opacity .35s,visibility 0s .35s}
 .lb.on{opacity:1;visibility:visible;transition:opacity .35s}
 .lb figure{margin:0;width:min(420px,78vw);transform:scale(.97);transition:transform .5s var(--out)}
@@ -334,8 +336,6 @@ a.pc:hover .top .icon{transform:rotate(-6deg)}
   <symbol id="i-work" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2"/></symbol>
   <symbol id="i-art" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M21 16l-5-5-8 9"/></symbol>
   <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6l8.5 7 8.5-7"/></symbol>
-  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z"/></symbol>
-  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
   <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></symbol>
   <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
   <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
@@ -446,8 +446,6 @@ a.pc:hover .top .icon{transform:rotate(-6deg)}
     <a href="#/work" data-v="work"><svg class="ico"><use href="#i-work"/></svg><span class="lbl">Work</span></a>
     <a href="#/gallery" data-v="gallery"><svg class="ico"><use href="#i-art"/></svg><span class="lbl">Gallery</span></a>
     <a href="#/contact" data-v="contact"><svg class="ico"><use href="#i-mail"/></svg><span class="lbl">Contact</span></a>
-    <span class="sep" aria-hidden="true"></span>
-    <button type="button" id="theme" aria-label="Switch light and dark"><svg class="ico"><use href="#i-moon"/></svg></button>
   </div>
   <div class="grp" id="gSub" hidden>
     <button type="button" id="sBack" aria-label="Back"><svg class="ico"><use href="#i-back"/></svg></button>
@@ -640,13 +638,6 @@ var GALLERY = [
   var media=function(src,alt){return src?'<img src="'+esc(src)+'" alt="'+esc(alt||'')+'" loading="lazy" onerror="this.style.visibility=\'hidden\'">':'<div class="ph"></div>';};
   var ctx; function tick(f){try{ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();var o=ctx.createOscillator(),g=ctx.createGain(),t=ctx.currentTime;
     o.type='triangle';o.frequency.setValueAtTime(f,t);g.gain.setValueAtTime(.04,t);g.gain.exponentialRampToValueAtTime(.0001,t+.07);o.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+.08);}catch(e){}}
-
-  /* theme */
-  var meta=document.querySelector('meta[name="theme-color"]');
-  try{var s=localStorage.getItem('bm-theme');if(s)root.dataset.theme=s;}catch(e){}
-  function syncTheme(){var d=root.dataset.theme==='dark';meta.content=d?'#0E0E0D':'#F3F2EF';$('theme').querySelector('use').setAttribute('href',d?'#i-sun':'#i-moon');}
-  $('theme').onclick=function(){root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('bm-theme',root.dataset.theme);}catch(e){}tick(root.dataset.theme==='dark'?760:1200);syncTheme();};
-  syncTheme();
 
   /* clock */
   function clock(){try{var t=new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'Africa/Nairobi'});$('clock').textContent=t;}catch(e){}}
