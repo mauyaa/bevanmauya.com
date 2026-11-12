@@ -16,7 +16,13 @@
   $('avatar').onclick=function(){pi=(pi+1)%pcs.length;$('avatar').style.setProperty('--pc',pcs[pi]);tick([760,980,640,520][pi]);};
 
   /* home: latest work card */
-  var L=PROJECTS[0]; $('latest').href='#/work/'+L.slug; $('latestT').textContent=L.title; $('latestL').textContent=L.line; $('latestR').textContent=L.result;
+  /* newest first in content.js: the card cycles through the four latest projects */
+  var li=0, LN=Math.min(4,PROJECTS.length);
+  function latest(){var L=PROJECTS[li]; $('latest').href='#/work/'+L.slug; $('latestT').textContent=L.title; $('latestL').textContent=L.line; $('latestR').textContent=L.result;}
+  latest();
+  if(LN>1&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){
+    setInterval(function(){if(document.hidden)return;var c=$('latest');c.classList.add('swap');
+      setTimeout(function(){li=(li+1)%LN;latest();c.classList.remove('swap');},260);},5000);}
 
   /* project identity: an app-icon tile in its colour (or its logo/image if given) */
   function icon(p,lg){var st='--c:'+(p.color||'#3A5A96')+';--f:'+(p.fg||'#F3F2EF');
@@ -85,7 +91,7 @@
     var links=(p.live?'<a class="btn solid" href="'+esc(p.live)+'" target="_blank" rel="noopener">See it live <span class="arr">↗</span></a>':'')+(p.code?'<a class="btn line" href="'+esc(p.code)+'" target="_blank" rel="noopener">Read the code <span class="arr">↗</span></a>':'');
     $('project').innerHTML=
       '<nav class="crumb mono" aria-label="Breadcrumb"><a href="#/">Bevan</a><span>/</span><a href="#/work">Work</a><span>/</span><span class="here">'+esc(p.title)+'</span></nav>'+
-      '<div class="ptile"><svg class="crown" viewBox="0 0 60 44" aria-hidden="true"><path d="M6 38 L9 14 L20 28 L30 7 L40 28 L51 13 L54 38 Z"/></svg><span class="pic">'+tile+'</span></div>'+
+      '<div class="ptile"><span class="pic">'+tile+'</span></div>'+
       '<h1>'+esc(p.title)+' — '+esc(p.kind.split(',')[0].toLowerCase())+'. <span>'+esc(p.line)+'</span></h1>'+
       '<p class="idea"><span class="x">'+esc(p.was)+X+'</span> '+esc(p.now)+'.<span class="note">'+esc(gname)+'</span></p>'+
       '<div class="label"><span class="mono">The problem</span></div><p class="lede" style="margin:0">'+esc(p.overview)+'</p>'+
@@ -130,7 +136,7 @@
   var here='/';
   function go(path,push){
     path=path||'/'; here=path;
-    if(push!==false){try{history.pushState({p:path},'','#'+path);}catch(e){}}
+    if(push!==false){try{history.pushState({p:path},'',path==='/'?location.pathname+location.search:'#'+path);}catch(e){}}
     route(path);
   }
   function route(path){
@@ -151,6 +157,6 @@
     e.preventDefault(); go(a.getAttribute('href').slice(1));
   });
   window.addEventListener('popstate',function(){var h='';try{h=location.hash;}catch(e){} go(h.replace(/^#/,'')||'/',false);});
-  var start='/'; try{start=(location.hash||'').replace(/^#/,'')||'/';}catch(e){}
+  var start='/'; try{start=(location.hash||'').replace(/^#/,'')||'/'; if(start==='/'&&location.hash)history.replaceState(null,'',location.pathname+location.search);}catch(e){}
   go(start,false);
 })();

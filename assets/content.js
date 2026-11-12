@@ -2,7 +2,47 @@
    live: a working demo URL (shows "See it live").
    demo: a deployment that exists but is currently offline (e.g. paused on Vercel) — move it to live: once it's back. */
 var PROJECTS = [
-  /* newest first; group: 'web2' products · 'web3' onchain · 'web4' AI */
+  /* newest first — the first four rotate through "Latest work" on Home; group: 'web2' products · 'web3' onchain · 'web4' AI */
+  { slug:'orim', color:'#1D1145', group:'web3', was:'a maze anyone can claim to solve', now:'escape times the chain verifies', title:'ORIM', year:'2026', kind:'Onchain game, Solana', line:'An endless labyrinth game where every escape time is verified on-chain.', result:'Replayed, signed and checked on Solana',
+    img:'assets/img/project-orim.jpg', live:'https://orim.vercel.app', code:'',
+    role:'Engineering · team project', tools:'Next.js · TypeScript · Rust (Anchor) · Metaplex Core · MagicBlock VRF · Solidity',
+    overview:'ORIM is a labyrinth game on Solana. Players choose every turn, creators draw and mint their own mazes, and the leaderboard ranks each player by an escape time the program has verified — not one the browser simply reports.',
+    steps:[{t:'Discover',d:'A leaderboard is only worth climbing if nobody can fake a time, and a maze is only worth making if it can belong to its creator.',img:''},
+           {t:'Design',d:'A 100-stage campaign across five worlds, an endless Infinite Run, a hand-drawn maze editor, and a community tab for mazes other players have minted.',img:''},
+           {t:'Build',d:'The server replays each run under the game’s own rules and signs only what the replay proves; the Solana program checks that ed25519 signature before saving a best time. Infinite Run seeds come from MagicBlock VRF.',img:''},
+           {t:'Launch',d:'Live on Solana, and on Robinhood Chain with maze and item NFTs paid in $wif. My work: player movement, MagicBlock VRF seeds, the Robinhood Chain NFTs and the shared wallet button.',img:''}],
+    metrics:[['100','campaign stages across five worlds'],['50×50','largest campaign maze'],['2','chains: Solana and Robinhood Chain']] },
+
+  { slug:'reception', color:'#14213D', group:'web4', was:'the loss explained afterwards', now:'the risk stopped before signing', title:'reCEPTION', year:'2026', kind:'Web3 security, AI', line:'AI security that checks a transaction before it is signed.', result:'Blocks or warns before execution',
+    img:'', live:'https://reception.re-labs.io', code:'',
+    role:'Engineering contributor · re Labs', tools:'TypeScript · Python · Solidity · Hedera · Base · BNB Chain',
+    overview:'Most Web3 security tools explain a loss after it happens. reCEPTION, built by re Labs, sits at the moment a user signs: it analyses the contract or transaction and can block it, warn the user or ask for another confirmation.',
+    steps:[{t:'Discover',d:'Billions are still lost every year to scams and malicious contracts, and dashboards that report afterwards cannot get that money back.',img:''},
+           {t:'Design',d:'Two ways in: a web interface where a connected wallet uploads a contract to scan, and an API with keys signed by and tied to the user’s wallet.',img:''},
+           {t:'Build',d:'AI risk analysis plus a Solidity contract that logs signed vulnerability checks with fee-based access. My merged work: reading analysis results with getCompletedAnalysis instead of polling logs, and the move to mainnet networks.',img:''},
+           {t:'Launch',d:'Live at reception.re-labs.io with documentation for API integration, alongside reCOMMERCE, a store that checks the payment contract before checkout.',img:''}],
+    metrics:[['Before','signing — not after the loss'],['2','ways in: web app and API'],['2','merged pull requests from me']] },
+
+  { slug:'heres', color:'#2B2B2A', group:'web3', was:'keys lost, wealth gone', now:'assets that reach your heirs', title:'Heres Protocol', year:'2026', kind:'Digital succession, Solana', line:'Self-custodied assets pass to your heirs if your wallet goes silent.', result:'No manual claims, no exposed keys',
+    img:'', live:'https://www.heresprotocol.com', code:'https://github.com/HeresProtocol/Heres-Protocol',
+    role:'Frontend engineering · team project', tools:'TypeScript · Rust · Solana · MagicBlock · TEE · Privy',
+    overview:'If someone loses their keys or passes away, self-custodied crypto and tokenised assets are usually lost for good. Heres locks assets in a time-locked vault and, if the owner’s wallet stays dormant past the time they chose, transfers them to the heirs they named.',
+    steps:[{t:'Discover',d:'As equities and real-world assets move on-chain, people lose the legal succession safety nets they had before.',img:''},
+           {t:'Design',d:'Deposit, name an heir, set an inactivity period; while the owner stays active the timer resets. The experience is meant to feel warm, not like crypto recovery.',img:''},
+           {t:'Build',d:'A MagicBlock crank checks liveness in the background and a trusted execution environment keeps the rules, amounts and heirs private. My work: the redesigned landing and pricing pages, the capsule flows, and email or Google sign-in through Privy.',img:''},
+           {t:'Launch',d:'Live on Solana devnet with demo tokenised U.S. equities from Tessera and xStocks; a B2B continuity SDK is next on the roadmap.',img:''}],
+    metrics:[['0','manual claims for heirs'],['TEE','private succession rules'],['Devnet','live on Solana']] },
+
+  { slug:'weep', color:'#0E0B14', group:'web3', was:'one transfer per person', now:'a whole group paid at once', title:'Weep', year:'2026', kind:'Group payments, Monad', line:'Pay a whole group at once, to the exact cent.', result:'Up to 100 people in one transaction',
+    img:'assets/img/project-weep.jpg', live:'https://weep-protocol.vercel.app', code:'https://github.com/Joseph-hackathon/Weep-Protocol',
+    role:'Engineering · team project', tools:'Next.js · TypeScript · Solidity · Monad · Privy · Chainlink CRE · Gemini',
+    overview:'When one payment is shared — tips for staff, prize money, a split bill — someone does the maths, sends money person by person and asks to be trusted. Weep reads the split in plain words, works out every cent, and pays everyone in one Monad transaction, even people who only have an email.',
+    steps:[{t:'Discover',d:'Splitting a payment means maths by hand, one transfer per person, and nobody able to check their share.',img:''},
+           {t:'Design',d:'An Individual side to send, receive and tip, and a Business side where a venue sets up its own team tip pool. Fees are shown before signing and paid on top, so every share arrives in full.',img:''},
+           {t:'Build',d:'Gemini turns words into rows, but Weep’s own code does the maths and the contract accepts only the reviewed total. My work: passkey sign-in, the tip-pool fix, the sending flow and the evidence and docs.',img:''},
+           {t:'Launch',d:'Live on Monad testnet with verified contracts, 39 passing contract tests, and receipts read back from the chain.',img:''}],
+    metrics:[['100','people paid in one transaction'],['39','contract tests passing'],['1.9–2.6s','submit to confirmed on Monad']] },
+
   { slug:'zcashflight', group:'web3', was:'shielded on chain, leaked off it', now:'privacy you can prove', title:'ZcashFlight', year:'2026', kind:'Privacy tooling, Zcash', line:'Privacy tests for Zcash apps.', result:'Finds leaks, proves the fix',
     img:'assets/img/zcashflight.jpg', live:'https://zcashflight.vercel.app', code:'https://github.com/mauyaa/zcashflight',
     role:'Founder · Engineering', tools:'TypeScript · Node.js · Zebra regtest · ZIP 316 / 321',
