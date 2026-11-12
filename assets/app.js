@@ -70,16 +70,13 @@
   document.addEventListener('keydown',function(e){if(!document.querySelector('[data-view="gallery"].on'))return;if(e.key==='ArrowRight')showPiece(gi+1);else if(e.key==='ArrowLeft')showPiece(gi-1);});
   showPiece(0,true);
   /* rotate on its own every 3.5s; pause while the pointer is over it, while touching, or when the gallery isn't open */
-  var paused=false, PLAY='<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 4.2v11.6a.8.8 0 0 0 1.2.7l9.4-5.8a.8.8 0 0 0 0-1.4L7.2 3.5A.8.8 0 0 0 6 4.2z" fill="currentColor"/></svg>', PAUSE=$('gplay').innerHTML;
-  $('gplay').onclick=function(){paused=!paused;this.innerHTML=paused?PLAY:PAUSE;this.setAttribute('aria-pressed',paused);this.setAttribute('aria-label',paused?'Play the slideshow':'Pause the slideshow');};
   (function(){var el=$('gstage'),hold=false,last=Date.now();
-    el.addEventListener('focusin',function(){hold=true;});el.addEventListener('focusout',function(){hold=false;});
     var mark=function(){last=Date.now();};
     el.addEventListener('mouseenter',function(){hold=true;});el.addEventListener('mouseleave',function(){hold=false;mark();});
-    el.addEventListener('touchstart',mark,{passive:true});['thumbs','gstage','gplay'].forEach(function(id){$(id).addEventListener('click',mark);});
+    el.addEventListener('touchstart',mark,{passive:true});['thumbs','gstage'].forEach(function(id){$(id).addEventListener('click',mark);});
     document.addEventListener('keydown',mark);
     if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-    setInterval(function(){if(paused||hold||document.hidden||!document.querySelector('[data-view="gallery"].on')||Date.now()-last<3500)return;showPiece(gi+1,true);mark();},500);})();
+    setInterval(function(){if(hold||document.hidden||!document.querySelector('[data-view="gallery"].on')||Date.now()-last<3500)return;showPiece(gi+1,true);mark();},500);})();
 
   /* segmented stepper (shared by Contact and project pages) */
   function seg(el,n,on){
