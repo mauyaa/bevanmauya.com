@@ -31,7 +31,9 @@
   /* work: one featured card, then a calm grid — the same cards as Home */
   /* a coloured letter tile when a project has no image */
   function lt(p){return '<span class="lt"'+(p.color?' style="background:'+esc(p.color)+';color:#F3F2EF"':'')+'>'+esc(p.title.charAt(0))+'</span>';}
-  function pitem(p){return '<a class="pitem" href="#/work/'+p.slug+'"><span class="im">'+(p.img?'<img src="'+esc(p.img)+'" alt="" loading="lazy">':lt(p))+'</span><b>'+esc(p.title)+'</b><span class="d">'+esc(p.kind)+'</span></a>';}
+  function bgs(p){return p.img&&p.color?' style="background:'+esc(p.color)+'"':'';}
+  function pimg(p,alt){return '<img src="'+esc(p.img)+'" alt="'+esc(alt||'')+'"'+(p.pad?' class="pad"':'')+' loading="lazy">';}
+  function pitem(p){return '<a class="pitem" href="#/work/'+p.slug+'"><span class="im"'+bgs(p)+'>'+(p.img?pimg(p):lt(p))+'</span><b>'+esc(p.title)+'</b><span class="d">'+esc(p.kind)+'</span></a>';}
   function inGroup(id){return PROJECTS.filter(function(p){return p.group===id;});}
   $('count').textContent=pad(PROJECTS.length);
   $('work').innerHTML=GROUPS.map(function(g){var items=inGroup(g.id);if(!items.length)return '';
@@ -86,12 +88,12 @@
   /* project: same rhythm as Home — mark, title, lede, chips, then cards */
   function renderProject(i){
     var p=PROJECTS[i], gname=(GROUPS.find(function(g){return g.id===p.group;})||{}).name||'', n=PROJECTS[(i+1)%PROJECTS.length];
-    var tile=p.img?'<img src="'+esc(p.img)+'" alt="'+esc(p.title)+'">':lt(p);
+    var tile=p.img?pimg(p,p.title):lt(p);
     var X='<svg viewBox="0 0 100 12" preserveAspectRatio="none" aria-hidden="true"><path d="M2 8 C 20 2, 40 10, 60 5 S 90 3, 98 7"/></svg>';
     var links=(p.live?'<a class="btn solid" href="'+esc(p.live)+'" target="_blank" rel="noopener">See it live <span class="arr">↗</span></a>':'')+(p.code?'<a class="btn line" href="'+esc(p.code)+'" target="_blank" rel="noopener">Read the code <span class="arr">↗</span></a>':'');
     $('project').innerHTML=
       '<nav class="crumb mono" aria-label="Breadcrumb"><a href="#/">Bevan</a><span>/</span><a href="#/work">Work</a><span>/</span><span class="here">'+esc(p.title)+'</span></nav>'+
-      '<div class="ptile"><span class="pic">'+tile+'</span></div>'+
+      '<div class="ptile"><span class="pic"'+bgs(p)+'>'+tile+'</span></div>'+
       '<h1>'+esc(p.title)+' — '+esc(p.kind.split(',')[0].toLowerCase())+'. <span>'+esc(p.line)+'</span></h1>'+
       '<p class="idea"><span class="x">'+esc(p.was)+X+'</span> '+esc(p.now)+'.<span class="note">'+esc(gname)+'</span></p>'+
       '<div class="label"><span class="mono">The problem</span></div><p class="lede" style="margin:0">'+esc(p.overview)+'</p>'+
@@ -101,7 +103,7 @@
       '<div class="label"><span class="mono">Outcome</span></div>'+
       '<div class="grid3">'+p.metrics.map(function(m){return '<div class="card stat"><span class="mono">'+esc(m[1])+'</span><b>'+esc(m[0])+'</b></div>';}).join('')+'</div>'+
       (links?'<div class="label"><span class="mono">One more thing</span></div><div class="card omt"><span class="mono">'+(p.live?'It’s real — go and use it':'The code is open — read how it’s built')+'</span><div class="actions">'+links+'</div></div>':'')+
-      ('<a class="card next" href="#/work/'+n.slug+'"><span class="nx"><span class="th">'+(n.img?'<img src="'+esc(n.img)+'" alt="">':lt(n))+'</span><span><span class="mono k">Next project</span><span class="t">'+esc(n.title)+'</span></span></span><span class="arr">→</span></a>');
+      ('<a class="card next" href="#/work/'+n.slug+'"><span class="nx"><span class="th"'+bgs(n)+'>'+(n.img?pimg(n):lt(n))+'</span><span><span class="mono k">Next project</span><span class="t">'+esc(n.title)+'</span></span></span><span class="arr">→</span></a>');
     seg($('pseg'),p.steps.length,function(k){setStep(k);});
     $('pseg').querySelectorAll('button').forEach(function(b,k){b.textContent=p.steps[k].t;});
     step=-1; setStep(0,true);
