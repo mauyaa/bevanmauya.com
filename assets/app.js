@@ -72,6 +72,14 @@
     el.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40){showPiece(gi+(dx<0?1:-1));}x0=null;},{passive:true});})();
   document.addEventListener('keydown',function(e){if(!document.querySelector('[data-view="gallery"].on'))return;if(e.key==='ArrowRight')showPiece(gi+1);else if(e.key==='ArrowLeft')showPiece(gi-1);});
   showPiece(0,true);
+  /* rotate on its own every 3.5s; pause while the pointer is over it, while touching, or when the gallery isn't open */
+  (function(){var el=$('gstage'),hold=false,last=Date.now();
+    var mark=function(){last=Date.now();};
+    el.addEventListener('mouseenter',function(){hold=true;});el.addEventListener('mouseleave',function(){hold=false;mark();});
+    el.addEventListener('touchstart',mark,{passive:true});['thumbs','gstage'].forEach(function(id){$(id).addEventListener('click',mark);});
+    document.addEventListener('keydown',mark);
+    if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    setInterval(function(){if(hold||document.hidden||!document.querySelector('[data-view="gallery"].on')||Date.now()-last<3500)return;showPiece(gi+1,true);mark();},500);})();
 
   /* segmented stepper (shared by Contact and project pages) */
   function seg(el,n,on){
