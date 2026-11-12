@@ -351,6 +351,130 @@ html{overflow-x:clip}
 @keyframes up{from{opacity:0;transform:translateY(6px)}}
 .rv{opacity:0}
 .rv.in{opacity:1;animation:up .5s cubic-bezier(.22,1,.36,1) backwards;animation-delay:var(--d,0ms)}
+
+/* ═════ DESIGN SYSTEM LAYER — Product Design Operating Manual v1.0 (house defaults) ═════
+   Spacing 4/8 scale · radii 8/12/16 · type ramp h1 36/44, title 20/28, body 16/24, small 14/20, caption 12/16, label 14/20 600
+   44px minimum targets · 2px focus ring · motion tokens 110/150/240/400/700ms, no bounce · reading width 68ch
+   Documented exceptions: gallery cards and app icons keep large "app-icon" radii (brand imagery, not controls). */
+:root{
+  --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-5:20px;--space-6:24px;--space-8:32px;--space-10:40px;--space-12:48px;--space-16:64px;--space-20:80px;--space-24:96px;
+  --radius-1:4px;--radius-2:8px;--radius-3:12px;--radius-4:16px;--radius-full:999px;
+  --m-fast-1:70ms;--m-fast-2:110ms;--m-med-1:150ms;--m-med-2:240ms;--m-slow-1:400ms;--m-slow-2:700ms;
+  --ease-standard:cubic-bezier(.2,0,.38,.9);--ease-enter:cubic-bezier(0,0,.38,.9);--ease-exit:cubic-bezier(.2,0,1,.9);
+  --out:var(--ease-enter);--spring:var(--ease-standard);
+  --r:var(--radius-3);--shadow:0 1px 2px rgba(20,24,33,.05);
+  --gutter:16px;
+}
+@media (min-width:600px){:root{--gutter:24px}}
+@media (min-width:840px){:root{--gutter:32px}}
+
+/* type ramp */
+html,body{font-size:16px;line-height:24px;transition:none}
+h1,.ttl{font-size:28px;line-height:36px;font-weight:600;letter-spacing:-.015em;max-width:none}
+@media (min-width:840px){h1,.ttl{font-size:36px;line-height:44px}}
+.g-head .ttl{font-size:28px;line-height:36px}
+@media (min-width:840px){.g-head .ttl{font-size:36px;line-height:44px}}
+.lede,.lede2,.stage p,.p-overview{max-width:68ch}
+.lede{margin-top:var(--space-4)}
+.mono{font-size:12px;line-height:16px;letter-spacing:.01em;text-transform:none}
+.stage .n{font-size:12px;line-height:16px;letter-spacing:.01em;text-transform:none}
+.island .step{font-size:12px;letter-spacing:.01em}
+.b .t,.next .t,.omt .t,.stage h3{font-size:20px;line-height:28px;font-weight:600;letter-spacing:0}
+.b .s,.pc .l,.cert .by,.stat span.s{font-size:14px;line-height:20px}
+.grp-h h3{font-size:20px;line-height:28px;font-weight:600;letter-spacing:0}
+.pitem b{font-size:14px;line-height:20px;font-weight:600;margin-top:var(--space-2)}
+.pitem .d{font-size:12px;line-height:16px;margin-top:var(--space-1)}
+.cert b{font-size:16px;line-height:24px;font-weight:600;letter-spacing:0}
+.stat b{font-size:24px;line-height:32px;font-weight:600;letter-spacing:-.005em}
+.idea{font-size:16px;line-height:24px;margin-top:var(--space-4)}
+.note{font-family:var(--sans);font-size:12px;line-height:16px;font-weight:500;color:var(--ink-3);transform:none;margin-left:var(--space-2);padding:0 var(--space-2);border-radius:var(--radius-1);background:var(--raise)}
+.tag{font-size:12px;line-height:16px;padding:var(--space-1) var(--space-2);border-radius:var(--radius-1)}
+
+/* top bar — brand top-left, aligned to the content column */
+.top{position:relative;z-index:5;height:56px;padding:0 var(--gutter)}
+.top .col{height:100%;display:flex;align-items:center}
+.brand{display:inline-flex;align-items:center;min-height:44px;font-size:16px;line-height:24px;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+@media (min-width:840px){.top{height:64px}}
+
+/* page shell — grid margins 16/24/32, content starts 24 below the bar (32 on desktop) */
+.view{padding:var(--space-6) var(--gutter) 128px;min-height:calc(100svh - 56px)}
+@media (min-width:840px){.view{padding-top:var(--space-8)}}
+.view.on{animation:enter var(--m-slow-1) var(--ease-enter) both}
+@keyframes enter{from{opacity:0;transform:translateY(8px)}}
+.crumb{margin-bottom:var(--space-6);gap:var(--space-2)}
+.crumb a{display:inline-flex;align-items:center;min-height:44px;margin:-10px 0}
+.avatar{margin-bottom:var(--space-6)}
+.actions{gap:var(--space-3);margin-top:var(--space-6)}
+.label{margin:var(--space-12) 0 var(--space-3)}
+.next{margin-top:var(--space-12);padding:var(--space-4)}
+@media (min-width:840px){.next{padding:var(--space-4) var(--space-6)}}
+
+/* controls — 44px, 16px padding, 8px radius, label 14/20 600 */
+.btn{height:44px;padding:0 var(--space-4);gap:var(--space-2);border-radius:var(--radius-2);font-size:14px;line-height:20px;font-weight:600;box-shadow:none;transition:background var(--m-fast-2) var(--ease-standard),transform var(--m-fast-2) var(--ease-standard)}
+.btn.solid{box-shadow:none}
+.btn.solid:hover{background:#2A303B;transform:none}
+.btn:active{transform:translateY(1px)}
+.status{height:32px;padding:0 var(--space-3);gap:var(--space-2);font-size:14px;line-height:20px;border-radius:var(--radius-full);background:var(--card)}
+.live{animation:none}
+.reach .rb{height:44px;padding:0 var(--space-4);border-radius:var(--radius-2);font-size:14px;line-height:20px;font-weight:600;transition:background var(--m-fast-2) var(--ease-standard)}
+.reach .rb:hover{transform:none}
+.seg button{height:44px;font-size:14px;font-weight:600}
+.seg .pill{transition:transform var(--m-med-2) var(--ease-standard),width var(--m-med-2) var(--ease-standard)}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:var(--radius-2)}
+.island a:focus-visible,.island button:focus-visible{outline-color:#EDEBE6}
+
+/* cards — 12px radius, 16 compact / 24 desktop padding, borders before shadows */
+.card{transition:transform var(--m-med-1) var(--ease-standard),box-shadow var(--m-med-1) var(--ease-standard),border-color var(--m-fast-2)}
+a.card:hover,button.card:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(20,24,33,.05),0 8px 24px rgba(20,24,33,.08)}
+.bento{gap:var(--space-4);margin-top:var(--space-12)}
+.b{padding:var(--space-4);gap:var(--space-3)}
+.b.photo .lbl{left:var(--space-3);right:var(--space-3);bottom:var(--space-3);font-size:14px;line-height:20px;min-height:44px;border-radius:var(--radius-2);padding:var(--space-2) var(--space-3)}
+.howcard,.omt,.stat{padding:var(--space-4)}
+@media (min-width:840px){.b,.howcard,.omt,.stat{padding:var(--space-6)}}
+.grid3{gap:var(--space-4)}
+.stage{transition:opacity var(--m-med-1) var(--ease-standard),transform var(--m-med-2) var(--ease-enter)}
+
+/* work — app-icon list and certificate rows (56px rows) */
+.grp-h{margin:var(--space-12) 0 var(--space-4);padding-bottom:var(--space-2)}
+.plist{gap:var(--space-6) var(--space-4)}
+.pitem .im{transition:transform var(--m-med-1) var(--ease-standard),box-shadow var(--m-med-1) var(--ease-standard)}
+.pitem:hover .im{transform:translateY(-2px)}
+.certs{padding:0 var(--space-4)}
+.cert{min-height:56px;padding:var(--space-3) 0;gap:var(--space-4);grid-template-columns:32px minmax(0,1fr) auto 16px}
+.cert .clogo{width:32px;height:32px;border-radius:var(--radius-2)}
+.certs:hover .cert{opacity:1}.cert:hover b{text-decoration:underline;text-underline-offset:3px}
+.cert .go{transition:transform var(--m-fast-2) var(--ease-standard)}
+
+/* project */
+.ptile{margin-bottom:var(--space-6)}
+.ptile .pic{border-radius:var(--radius-4)}
+
+/* contact */
+.apps{gap:var(--space-6) var(--space-3);margin-top:var(--space-10)}
+.app .ai{transition:transform var(--m-med-1) var(--ease-standard),box-shadow var(--m-med-1) var(--ease-standard)}
+.app:hover .ai{transform:translateY(-2px)}
+.app .an{font-size:14px;line-height:20px}
+
+/* gallery — 400ms move, dots get 24px hit areas, a pause control for the rotation */
+.gcard{transition:left var(--m-slow-1) var(--ease-standard),top var(--m-slow-1) var(--ease-standard),width var(--m-slow-1) var(--ease-standard),height var(--m-slow-1) var(--ease-standard),border-radius var(--m-slow-1) var(--ease-standard),opacity var(--m-med-2) var(--ease-standard)}
+.gcap{flex-direction:row;justify-content:center;gap:var(--space-2);margin-top:var(--space-2)}
+.gplay{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:var(--radius-2);color:var(--ink)}
+.gplay:hover{background:var(--raise)}
+.gplay svg{width:20px;height:20px}
+.gdots{gap:0;margin-top:0}
+.gdots button{width:20px;height:24px;padding:9px 7px;background:color-mix(in srgb,var(--ink) 45%,transparent);background-clip:content-box;border-radius:6px;transition:width var(--m-med-2) var(--ease-standard),background-color var(--m-fast-2)}
+.gdots button[aria-current="true"]{width:34px;background:var(--ink);background-clip:content-box}
+
+/* island — bottom navigation 56 + safe area, 48px touch targets */
+.island{height:56px;padding:4px}
+.island a,.island button{height:48px;min-width:48px;transition:background var(--m-med-1) var(--ease-standard),color var(--m-fast-2)}
+.island .lbl{font-size:14px;line-height:20px;transition:max-width var(--m-med-2) var(--ease-standard),margin var(--m-med-2) var(--ease-standard)}
+.island.pop{animation:none}
+.toast{font-size:14px;line-height:20px;padding:var(--space-2) var(--space-4);border-radius:var(--radius-2);bottom:calc(88px + env(safe-area-inset-bottom));transition:opacity var(--m-med-2) var(--ease-standard),transform var(--m-med-2) var(--ease-enter)}
+
+/* entrance for lists — 240ms, entrance easing */
+.rv.in{animation-duration:var(--m-med-2);animation-timing-function:var(--ease-enter)}
+#latest .t,#latest .s,#latest .tag{transition:opacity var(--m-med-2) var(--ease-standard),transform var(--m-med-2) var(--ease-standard)}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.avatar .paint{clip-path:none}.avatar .fig{opacity:1;transform:none}}
 </style>
 </head>
@@ -366,6 +490,7 @@ html{overflow-x:clip}
   <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
 </svg>
 
+<header class="top"><div class="col"><a class="brand" href="#/" aria-label="Bevan Mauya, home">Bevan Mauya</a></div></header>
 <main>
   <!-- ═════ HOME ═════ -->
   <section class="view" data-view="home" aria-label="Home">
@@ -433,7 +558,7 @@ html{overflow-x:clip}
       <nav class="crumb mono" aria-label="Breadcrumb"><a href="#/">Bevan</a><span>/</span><span class="here">Gallery</span></nav>
       <div class="g-head"><h2 class="ttl">Gallery</h2><span class="mono" id="gcount"></span></div>
       <div class="gstage" id="gstage" tabindex="0" aria-label="Gallery — use the arrow keys or swipe" aria-roledescription="carousel"></div>
-      <div class="gcap"><span class="mono" id="gidx"></span></div>
+      <div class="gcap"><button type="button" class="gplay" id="gplay" aria-label="Pause the slideshow" aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="5" y="4" width="3.2" height="12" rx="1" fill="currentColor"/><rect x="11.8" y="4" width="3.2" height="12" rx="1" fill="currentColor"/></svg></button><span class="mono" id="gidx"></span></div>
       <div class="gdots" id="thumbs" aria-label="All pieces"></div>
       <a class="card next" href="#/contact"><span><span class="mono k">Next</span><span class="t">Contact</span></span><span class="arr">→</span></a>
     </div>
@@ -481,7 +606,7 @@ html{overflow-x:clip}
   </div>
 </nav>
 
-<script src="assets/content.js?v=7"></script>
-<script src="assets/app.js?v=18"></script>
+<script src="assets/content.js?v=8"></script>
+<script src="assets/app.js?v=20"></script>
 </body>
 </html>

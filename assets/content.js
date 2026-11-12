@@ -121,17 +121,7 @@ var PROJECTS = [
            {t:'Design',d:'Trust became the product: ID-verified agents, vetted listings, live availability, and a map to search by area.',img:''},
            {t:'Build',d:'Separate portals for renters, agents, admins and payments; a verification queue; Socket.IO chat; typo-tolerant search; and viewing fees held until the viewing happens.',img:''},
            {t:'Launch',d:'A PWA with neighbourhood pages for 11 Nairobi areas, structured data for every listing, and blur-up images so pages don’t jump.',img:''}],
-    metrics:[['100%','agents ID-verified'],['11','Nairobi neighbourhood guides'],['4','portals: renter, agent, admin, pay']] },
-
-  { slug:'anighost', group:'web2', was:'waiting a week', now:'simulcast within the hour', title:'Ani Ghost', year:'2026', kind:'Anime streaming platform, UI engineering', line:'Anime streaming with sub and dub, simulcast within the hour.', result:'New episodes about an hour after broadcast',
-    img:'assets/img/project-anighost.jpg', live:'https://anighost.com/', code:'',
-    role:'Product architecture & UI', tools:'Next.js · Edge CDN · Video player · Theme engine',
-    overview:'Fans want new episodes the moment they air, in the language they prefer. Ani Ghost streams anime with sub and dub tracks and simulcasts about an hour after Japanese broadcast, behind a smooth, animated way to discover what to watch.',
-    steps:[{t:'Discover',d:'Fans want new episodes as soon as they air, and the choice of sub or dub — without a clumsy catalogue in the way.',img:''},
-           {t:'Design',d:'Discovery built on an animated poster plane, with a theme engine so the interface can change with the season.',img:''},
-           {t:'Build',d:'Next.js served from an edge CDN, a responsive video player, and hardware-accelerated transforms so it stays smooth on any device.',img:''},
-           {t:'Launch',d:'Live at anighost.com, with simulcasts about an hour after Japanese broadcast.',img:''}],
-    metrics:[['~1h','after Japanese broadcast'],['Sub + Dub','on every title'],['Edge','served close to viewers']] }
+    metrics:[['100%','agents ID-verified'],['11','Nairobi neighbourhood guides'],['4','portals: renter, agent, admin, pay']] }
 ];
 var GROUPS = [ {id:'web2', name:'Web 2', note:'Products'}, {id:'web3', name:'Web 3', note:'Onchain'}, {id:'web4', name:'Web 4', note:'AI'} ];
 /* Certifications — newest first. Each links to its official verification page. */
