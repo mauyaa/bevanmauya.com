@@ -136,14 +136,19 @@ var PROJECTS = [
 var GROUPS = [ {id:'web2', name:'Web 2', note:'Products'}, {id:'web3', name:'Web 3', note:'Onchain'}, {id:'web4', name:'Web 4', note:'AI'} ];
 /* Certifications — newest first. Each links to its official verification page. */
 var CERTS = [
-  { name:'Python Programming', issuer:'ALX Africa', date:'Jul 2026', url:'https://savanna.alxafrica.com/certificates/6PLnBeHYN8' },
-  { name:'AWS AI Practitioner Challenge', issuer:'Udacity', date:'Jun 2026', url:'https://www.udacity.com/certificate/e/ccf54514-29c2-11f1-8d9e-9333b16be0d7' },
-  { name:'Data Analytics', issuer:'ALX Africa', date:'Apr 2026', url:'https://savanna.alxafrica.com/certificates/NfmxH2MR8G' },
-  { name:'AI Career Essentials', issuer:'ALX Africa', date:'Apr 2026', url:'https://savanna.alxafrica.com/certificates/Yp3HGJEcy2' },
-  { name:'Back-End Web Development', issuer:'ALX Africa', date:'Nov 2025', url:'https://savanna.alxafrica.com/certificates/nz57YHNJM8' },
-  { name:'Front-End Web Development', issuer:'ALX Africa', date:'Nov 2025', url:'https://savanna.alxafrica.com/certificates/CYBPr8yh3X' },
-  { name:'Professional Foundations', issuer:'ALX Africa', date:'Jun 2025', url:'https://savanna.alxafrica.com/certificates/xNf5sPenBR' },
-  { name:'Cyber Security', issuer:'Moringa School', date:'Nov 2024', url:'https://moringa.my.salesforce-sites.com/certificateStatus?id=a0PQ200000CMPxD' }
+  { name:'AI Data Harness Solution Developer', issuer:'Zetaris x SpaceXSI', logo:'assets/img/issuer-zetaris.jpg', date:'Nov 2026', url:'https://www.zetaris.com/credentials/ztr-dhsd-dvw3nj' },
+  { name:'Data Engineering', issuer:'ALX Africa', logo:'assets/img/issuer-alx.jpg', date:'Oct 2026', url:'https://ehub.alxafrica.com/ob3/verify-certificate/db1f8677-5e45-4810-9255-a321bb67c031' },
+  { name:'Founder Academy', issuer:'ALX Africa', logo:'assets/img/issuer-alx.jpg', date:'Sep 2026', url:'https://ehub.alxafrica.com/ob3/verify-certificate/e98f189a-05c8-4932-83c3-2ea5f719ee60' },
+  { name:'Content Creation', issuer:'ALX Africa', logo:'assets/img/issuer-alx.jpg', date:'Sep 2026', url:'https://ehub.alxafrica.com/ob3/verify-certificate/7b75a0c2-4f04-4840-aa28-4ab511791abe' },
+  { name:'Python Programming', issuer:'ALX Africa', logo:'assets/img/issuer-alx.jpg', date:'Jul 2026', url:'https://savanna.alxafrica.com/certificates/6PLnBeHYN8' },
+  { name:'AWS AI Practitioner Challenge', issuer:'Udacity', logo:'assets/img/issuer-udacity.jpg', date:'Jun 2026', url:'https://www.udacity.com/certificate/e/ccf54514-29c2-11f1-8d9e-9333b16be0d7' },
+  { name:'Data Analytics', issuer:'ALX Africa', logo:'assets/img/issuer-alx.jpg', date:'Apr 2026', url:'https://savanna.alxafrica.com/certificates/NfmxH2MR8G' },
+  { name:'AI Career Essentials', issuer:'ALX Africa', logo:'assets/img/issuer-alx.jpg', date:'Apr 2026', url:'https://savanna.alxafrica.com/certificates/Yp3HGJEcy2' },
+  { name:'Back-End Web Development', issuer:'ALX Africa', logo:'assets/img/issuer-alx.jpg', date:'Nov 2025', url:'https://savanna.alxafrica.com/certificates/nz57YHNJM8' },
+  { name:'Front-End Web Development', issuer:'ALX Africa', logo:'assets/img/issuer-alx.jpg', date:'Nov 2025', url:'https://savanna.alxafrica.com/certificates/CYBPr8yh3X' },
+  { name:'GenAI Course for Software Engineers', issuer:'WeThinkCode', logo:'assets/img/issuer-wethinkcode.jpg', date:'Sep 2025', url:'' },
+  { name:'Professional Foundations', issuer:'ALX Africa', logo:'assets/img/issuer-alx.jpg', date:'Jun 2025', url:'https://savanna.alxafrica.com/certificates/xNf5sPenBR' },
+  { name:'Cyber Security', issuer:'Moringa School', logo:'assets/img/issuer-moringa.jpg', date:'Nov 2024', url:'https://moringa.my.salesforce-sites.com/certificateStatus?id=a0PQ200000CMPxD' }
 ];
 var GALLERY = [
   { title:'Postcards, in red', meta:'Nairobi', img:'assets/img/gallery-postcards.jpg' },

@@ -39,7 +39,9 @@
   $('work').innerHTML=GROUPS.map(function(g){var items=inGroup(g.id);if(!items.length)return '';
     return '<div class="grp-h"><h3>'+esc(g.name)+' <span>· '+esc(g.note)+'</span></h3><span class="mono">'+pad(items.length)+'</span></div><div class="plist">'+items.map(pitem).join('')+'</div>';}).join('');
   $('ccount').textContent=pad(CERTS.length);
-  $('certs').innerHTML=CERTS.map(function(c){return '<li><a class="cert" href="'+esc(c.url)+'" target="_blank" rel="noopener" aria-label="Verify '+esc(c.name)+' from '+esc(c.issuer)+'"><span><b>'+esc(c.name)+'</b><span class="by">'+esc(c.issuer)+'</span></span><span class="mono">'+esc(c.date)+'</span><span class="go">↗</span></a></li>';}).join('');
+  $('certs').innerHTML=CERTS.map(function(c){
+    var inner='<img class="clogo" src="'+esc(c.logo)+'" alt="" loading="lazy"><span><b>'+esc(c.name)+'</b><span class="by">'+esc(c.issuer)+'</span></span><span class="mono">'+esc(c.date)+'</span>';
+    return '<li>'+(c.url?'<a class="cert" href="'+esc(c.url)+'" target="_blank" rel="noopener" aria-label="Verify '+esc(c.name)+' from '+esc(c.issuer)+'">'+inner+'<span class="go">↗</span></a>':'<div class="cert">'+inner+'<span></span></div>')+'</li>';}).join('');
   function renderGroup(id){
     var g=GROUPS.find(function(x){return x.id===id;}), items=inGroup(id);
     $('gcrumb').textContent=g.name; $('gtitle').textContent=g.name; $('gnum').textContent=pad(items.length);
