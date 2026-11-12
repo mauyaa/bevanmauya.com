@@ -52,7 +52,7 @@
   /* gallery: a rail of rounded cards — the chosen one in the middle, neighbours smaller on each side */
   var gi=0, GN=GALLERY.length, OFF=[0,.93,1.68,2.3], SC=[1,.78,.62,.5], OP=[1,.92,.55,0];
   $('gcount').textContent=pad(GN);
-  $('gstage').innerHTML=GALLERY.map(function(g,i){return '<button type="button" class="gcard" data-i="'+i+'" aria-label="'+esc(g.title)+'">'+media(g.img,g.title)+'</button>';}).join('');
+  $('gstage').innerHTML=GALLERY.map(function(g,i){return '<button type="button" class="gcard" data-i="'+i+'" aria-label="'+esc(g.title)+'"><img src="'+esc(g.img)+'" alt="'+esc(g.title)+'" decoding="async"></button>';}).join('');
   $('thumbs').innerHTML=GALLERY.map(function(g,i){return '<button type="button" data-i="'+i+'" aria-label="'+esc(g.title)+'"></button>';}).join('');
   function showPiece(i,quiet){
     gi=(i+GN)%GN; var g=GALLERY[gi];

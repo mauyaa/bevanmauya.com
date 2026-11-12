@@ -151,6 +151,9 @@ var CERTS = [
   { name:'Cyber Security', issuer:'Moringa School', logo:'assets/img/issuer-moringa.jpg', date:'Nov 2024', url:'https://moringa.my.salesforce-sites.com/certificateStatus?id=a0PQ200000CMPxD' }
 ];
 var GALLERY = [
+  { title:'Glass tower', meta:'', img:'assets/img/gallery-tower.jpg' },
+  { title:'Minaret', meta:'', img:'assets/img/gallery-minaret.jpg' },
+  { title:'Maize field', meta:'', img:'assets/img/gallery-field.jpg' },
   { title:'Blue arch', meta:'', img:'assets/img/gallery-arch.jpg' },
   { title:'Postcards, in red', meta:'Nairobi', img:'assets/img/gallery-postcards.jpg' },
   { title:'We are the change, the future', meta:'Nairobi', img:'assets/img/gallery-change.jpg' },
