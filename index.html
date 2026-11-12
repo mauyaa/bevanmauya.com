@@ -263,16 +263,19 @@ img.pad{object-fit:contain!important;padding:20%;box-sizing:border-box}
 .pitem:hover .folder{transform:translateY(-4px) scale(1.03);box-shadow:0 0 0 1px var(--line),0 14px 28px rgba(21,21,21,.12)}
 
 /* gallery: one piece at a time on the wall, the rest waiting below */
-.gstage{position:relative;aspect-ratio:4/3;background:var(--wallc);display:flex;align-items:center;justify-content:center;margin-top:24px;cursor:pointer;overflow:hidden;-webkit-tap-highlight-color:transparent}
-.gstage .print{flex:none;height:82%;width:auto;aspect-ratio:3/4;background:#FBFAF7;padding:2.2%;box-shadow:0 1px 1px rgba(0,0,0,.06),0 12px 26px rgba(0,0,0,.12),0 36px 70px -24px rgba(0,0,0,.24);transition:opacity .35s var(--ease,ease),transform .6s var(--out)}
-.gstage .print img{width:100%;height:100%;object-fit:cover}
-.gstage .print.out{opacity:0;transform:translateY(10px)}
-.gcap{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:12px;font-size:13px;color:var(--ink)}
-.thumbs{display:flex;gap:8px;margin-top:18px;overflow-x:auto;scrollbar-width:none;padding:2px}
-.thumbs button{flex:none;width:44px;aspect-ratio:3/4;overflow:hidden;opacity:.45;transition:opacity .3s,box-shadow .3s;box-shadow:0 0 0 1px var(--line)}
-.thumbs button img{width:100%;height:100%;object-fit:cover}
-.thumbs button[aria-current="true"]{opacity:1;box-shadow:0 0 0 1.5px var(--ink)}
-.thumbs button:hover{opacity:1}
+html{overflow-x:clip}
+.gstage{--w:clamp(190px,30vw,300px);position:relative;width:100vw;left:50%;margin-left:-50vw;height:calc(var(--w)*1.25 + 56px);margin-top:20px;overflow:hidden;outline:none;-webkit-tap-highlight-color:transparent;touch-action:pan-y}
+.gcard{position:absolute;left:50%;top:50%;width:var(--w);aspect-ratio:4/5;margin:calc(var(--w)*-.625) 0 0 calc(var(--w)*-.5);padding:0;border:0;border-radius:calc(var(--w)*.2);overflow:hidden;background:var(--ph);cursor:pointer;
+  box-shadow:0 2px 6px rgba(20,24,33,.06),0 24px 48px -18px rgba(20,24,33,.28);transition:transform .75s var(--out),opacity .6s var(--out),filter .6s var(--out)}
+.gcard img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.04);transition:transform 1.2s var(--out)}
+.gcard.on{cursor:default}.gcard.on img{transform:none}
+.gcard:not(.on){filter:saturate(.85) brightness(.97)}
+.gcard:not(.on):hover{filter:none}
+.gcap{display:flex;flex-direction:column;align-items:center;gap:4px;margin-top:6px;text-align:center;font-size:14px;font-weight:500;color:var(--ink);letter-spacing:-.01em}
+.gcap span{transition:opacity .3s}
+.gdots{display:flex;justify-content:center;gap:6px;margin-top:14px}
+.gdots button{width:6px;height:6px;padding:0;border:0;border-radius:6px;background:color-mix(in srgb,var(--ink) 22%,transparent);cursor:pointer;transition:width .45s var(--out),background .3s}
+.gdots button[aria-current="true"]{width:20px;background:var(--ink)}
 
 /* certifications: a quiet, verifiable list under the work */
 .certs{list-style:none;margin:0;padding:2px 16px}
@@ -334,7 +337,6 @@ img.pad{object-fit:contain!important;padding:20%;box-sizing:border-box}
   .grid3>:last-child:nth-child(odd){grid-column:1/-1}
   .walls{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 10px}
   .plist{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 6px}
-  .gstage{aspect-ratio:4/5}
   .pitem .im{width:76%}
   .postcard{width:90%}
   .c-wall{aspect-ratio:5/4}
@@ -423,9 +425,9 @@ img.pad{object-fit:contain!important;padding:20%;box-sizing:border-box}
     <div class="col">
       <nav class="crumb mono" aria-label="Breadcrumb"><a href="#/">Bevan</a><span>/</span><span class="here">Gallery</span></nav>
       <div class="g-head"><h2 class="ttl">Gallery</h2><span class="mono" id="gcount"></span></div>
-      <div class="gstage" id="gstage" role="button" tabindex="0" aria-label="Next piece"><span class="print" id="gprint"></span></div>
+      <div class="gstage" id="gstage" tabindex="0" aria-label="Gallery — use the arrow keys or swipe" aria-roledescription="carousel"></div>
       <div class="gcap"><span id="gname"></span><span class="mono" id="gidx"></span></div>
-      <div class="thumbs" id="thumbs" aria-label="All pieces"></div>
+      <div class="gdots" id="thumbs" aria-label="All pieces"></div>
       <a class="card next" href="#/contact"><span><span class="mono k">Next</span><span class="t">Contact</span></span><span class="arr">→</span></a>
     </div>
   </section>
@@ -473,6 +475,6 @@ img.pad{object-fit:contain!important;padding:20%;box-sizing:border-box}
 </nav>
 
 <script src="assets/content.js?v=6"></script>
-<script src="assets/app.js?v=6"></script>
+<script src="assets/app.js?v=7"></script>
 </body>
 </html>
