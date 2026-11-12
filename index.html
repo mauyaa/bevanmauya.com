@@ -342,6 +342,11 @@ html{overflow-x:clip}
   .seg button{font-size:11.5px}
   .island a,.island button{padding:0 11px}
 }
+@keyframes up{from{opacity:0;transform:translateY(16px)}}
+.rv{opacity:0}
+.rv.in{opacity:1;animation:up .75s var(--out) backwards;animation-delay:var(--d,0ms)}
+.apps > .rv.in,.plist > .rv.in{animation-name:pop2;animation-duration:.8s}
+@keyframes pop2{from{opacity:0;transform:translateY(14px) scale(.9)}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.avatar .paint{clip-path:none}.avatar .fig{opacity:1;transform:none}}
 </style>
 </head>
@@ -473,6 +478,6 @@ html{overflow-x:clip}
 </nav>
 
 <script src="assets/content.js?v=7"></script>
-<script src="assets/app.js?v=11"></script>
+<script src="assets/app.js?v=14"></script>
 </body>
 </html>
