@@ -58,7 +58,7 @@
     gi=(i+GN)%GN; var g=GALLERY[gi];
     $('gstage').querySelectorAll('.gcard').forEach(function(c,k){
       var d=k-gi; if(d>GN/2)d-=GN; if(d<-GN/2)d+=GN; var a=Math.min(Math.abs(d),3), sg=d<0?-1:1;
-      c.style.transform='translateX(calc(var(--w)*'+(sg*OFF[a])+')) scale('+SC[a]+')';
+      c.style.setProperty('--x',sg*OFF[a]); c.style.setProperty('--s',SC[a]);
       c.style.opacity=OP[a]; c.style.zIndex=10-a; c.classList.toggle('on',d===0); c.tabIndex=d===0?0:-1;
       c.setAttribute('aria-hidden',a>2);});
     $('gname').textContent=g.title; $('gidx').textContent=pad(gi+1)+' / '+pad(GN);
