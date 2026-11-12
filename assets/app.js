@@ -7,9 +7,6 @@
   var ctx; function tick(f){try{ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();var o=ctx.createOscillator(),g=ctx.createGain(),t=ctx.currentTime;
     o.type='triangle';o.frequency.setValueAtTime(f,t);g.gain.setValueAtTime(.04,t);g.gain.exponentialRampToValueAtTime(.0001,t+.07);o.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+.08);}catch(e){}}
 
-  /* clock */
-  function clock(){try{var t=new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'Africa/Nairobi'});$('clock').textContent=t;}catch(e){}}
-  clock(); setInterval(clock,15000);
 
   /* profile colour: tap to change it — orange, yellow, blue, black */
   var pcs=['#DA460D','#D4A93E','#3A5A96','#1C1C1B'], pi=0;
@@ -92,9 +89,11 @@
   }
   function segSet(el,k){el.querySelectorAll('button').forEach(function(b,j){b.setAttribute('aria-selected',j===k);});el.querySelector('.pill').style.transform='translateX(calc('+k+' * (100% + 4px)))';}
 
-  /* copy email */
-  $('copy').onclick=function(){var done=function(){var t=$('toast');t.classList.add('on');$('copy').textContent='Copied ✓';tick(1100);setTimeout(function(){t.classList.remove('on');$('copy').textContent='Copy email';},1600);};
-    try{navigator.clipboard.writeText('mauyabevan@gmail.com').then(done,done);}catch(e){done();}};
+  /* copy email — the Contact page button and the Home card button */
+  $('copy').classList.add('copy-email');
+  document.querySelectorAll('.copy-email').forEach(function(b){var label=b.textContent;b.onclick=function(){
+    var done=function(){var t=$('toast');t.classList.add('on');b.textContent='Copied ✓';tick(1100);setTimeout(function(){t.classList.remove('on');b.textContent=label;},1600);};
+    try{navigator.clipboard.writeText('mauyabevan@gmail.com').then(done,done);}catch(e){done();}};});
 
   /* island */
   var island=$('island'), sub=null, step=0, cur=-1, lbI=-1;
